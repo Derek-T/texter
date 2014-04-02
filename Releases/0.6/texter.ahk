@@ -55,6 +55,11 @@ Loop
 		}
 	    Input, UserInput, L1 V M, %EndKeys%
 		;Tooltip, Input received, 10, 10
+		if (UserInput = Del) or (UserInput = BS)
+		{ ;Delete last character from keyword in memory
+		StringTrimRight, PossibleMatch, PossibleMatch, 1
+		}
+		else 
 	    if (SubStr(ErrorLevel, 1, 6) = "EndKey")
 	    { ;any end key resets the search for a match
 	      PossibleMatch=
@@ -318,8 +323,8 @@ IfInString,ReplacementText,::scr::
 	}
 	IfInString,ReplacementText,`%s
 	{
-		StringReplace, ReplacementText, ReplacementText,`%s(, ¢, All
-		Loop,Parse,ReplacementText,¢
+		StringReplace, ReplacementText, ReplacementText,`%s(, ï¿½, All
+		Loop,Parse,ReplacementText,ï¿½
 		{
 			if (A_Index != 1)
 			{
